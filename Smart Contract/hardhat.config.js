@@ -9,7 +9,7 @@ module.exports = {
   solidity: "0.8.17",
   // defaultNetwork: "matic",
   networks: {
-    matic: {
+    maticmum: {
       url: process.env.ALCHEMY_MUMBAI_URL,
       accounts: [process.env.POLYGON_WALLET_PRIVATE_KEY]
     },

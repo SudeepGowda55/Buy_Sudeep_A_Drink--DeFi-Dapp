@@ -33,7 +33,7 @@ contract BuySudeepADrink {
             _message
         ));
         emit NewMemo(msg.sender, block.timestamp, _name, _message);
-        return string("hello world");
+        return string("Thank you so much, i am able to buy a coffee");
     }
 
     function withDraw() public payable {
