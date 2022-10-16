@@ -24,7 +24,7 @@ contract BuySudeepADrink {
         sudeep = payable(msg.sender);
     }
 
-    function buySudeepADrink(string memory _name, string memory _message)  payable public {
+    function buyADrink(string memory _name, string memory _message)  payable public returns(string memory) {
         require(msg.value > 0, "Sorry Buddy Can't Buy A Drink with 0 Eth");
         memos.push(Memo(
             msg.sender,
@@ -32,8 +32,8 @@ contract BuySudeepADrink {
             _name,
             _message
         ));
-
         emit NewMemo(msg.sender, block.timestamp, _name, _message);
+        return string("hello world");
     }
 
     function withDraw() public payable {
@@ -45,3 +45,5 @@ contract BuySudeepADrink {
         return memos;
     }
 }
+
+// This contract is deployed in Polygon mumbai test network and the contract address is 0xC4Eb4b747bd5f09E49717FE8B3aec4386DEf3D7b
