@@ -8,7 +8,7 @@ async function getBalance(provider, address) {
 
 async function main() {
 
-  const contractAddress="0xC4Eb4b747bd5f09E49717FE8B3aec4386DEf3D7b";
+  const contractAddress="0xDAA150478C3Ca092527C662D966F62aabDB435A3";
   const contractABI = abi.abi;
 
   const provider = new hre.ethers.providers.AlchemyProvider("maticmum", process.env.ALCHEMY_PRIVATE_KEY);
@@ -17,20 +17,20 @@ async function main() {
 
   const BuySudeepADrink = new hre.ethers.Contract(contractAddress, contractABI, signer);
 
-  console.log("current balance of owner: ", await getBalance(provider, signer.address), "ETH");
+  console.log("current balance of owner: ", await getBalance(provider, signer.address), "Matic");
   const contractBalance = await getBalance(provider, BuySudeepADrink.address);
-  console.log("current balance of contract: ", await getBalance(provider, BuySudeepADrink.address), "ETH");
+  console.log("current balance of contract: ", await getBalance(provider, BuySudeepADrink.address), "Matic");
 
   // Withdraw funds if there are funds to withdraw.
   if (contractBalance !== "0.0") {
     console.log("withdrawing funds..")
-    const withdrawEth = await BuySudeepADrink.withDraw();
-    await withdrawEth.wait();
+    const withdrawMatic = await BuySudeepADrink.withDraw();
+    await withdrawMatic.wait();
   } else {
     console.log("no funds to withdraw!");
   }
 
-  console.log("current balance of owner: ", await getBalance(provider, signer.address), "ETH");
+  console.log("current balance of owner: ", await getBalance(provider, signer.address), "Matic");
 }
 
 main()
